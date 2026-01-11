@@ -14,16 +14,16 @@ columns_order = model_package["columns"]
 #Sidebar (Student info and logo)
 st.sidebar.markdown("---")
 try:
-    # Replace 'images/parami_logo.png' with your actual file path
     logo = Image.open("images/parami_logo.png") 
     st.sidebar.image(logo, use_container_width=True)
 except Exception:
     st.sidebar.error("Logo not found. Please add 'parami_logo.png' to the images folder.")
 
 st.sidebar.subheader("Student Information")
-st.sidebar.write("**Ei Mon Soe**")
-st.sidebar.write("Data Science Senior Student")
-st.sidebar.write("Parami University")
+st.sidebar.markdown("""
+**Ei Mon Soe** Senior Data Science Student  
+Parami University
+""")
 st.sidebar.markdown("---") 
 
 #App Title
