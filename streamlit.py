@@ -11,8 +11,8 @@ model = model_package["model"]
 le = model_package["label_encoder"]
 columns_order = model_package["columns"]
 
-#SIDEBAR: STUDENT INFO & LOGO
-st.sidebar.markdown("---") # Visual separator
+#Sidebar (Student info and logo)
+st.sidebar.markdown("---")
 try:
     # Replace 'images/parami_logo.png' with your actual file path
     logo = Image.open("images/parami_logo.png") 
