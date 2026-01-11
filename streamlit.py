@@ -42,27 +42,28 @@ st.sidebar.markdown("""
 """)
 
 #High Importance
+st.subheader("Health & Socio-Economic Indicators")
 col1, col2 = st.columns(2)
 with col1:
-    Schooling = st.slider("📚 Schooling - Years", min_value=0.0, max_value=20.0, value=12.0, step=0.1)
-    Income_comp = st.slider("💵 Income Composition (HDI)", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
-    GDP = st.number_input("💰 GDP per Capita (USD)", min_value=0.0, value=5000.0, step=100.0)
-    Immunization = st.slider("💉 Immunization %", min_value=0.0, max_value=100.0, value=95.0)
+    Schooling = st.slider("📚 Schooling", min_value=0.0, max_value=20.0, value=12.0, step=0.1)
+    Income_comp = st.slider("💵 Income Composition", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
+    GDP = st.number_input("💰 GDP per Capita in USD)", min_value=0.0, value=5000.0, step=100.0)
+    Immunization = st.slider("Immunization (Hepatitis B, Polio, Diphtheria)", min_value=0.0, max_value=100.0, value=95.0)
 
 with col2:
-    Alcohol = st.slider("🍷 Alcohol Consumption (Liters)", min_value=0.0, max_value=20.0, value=5.0, step=0.1)
-    Adult_Mortality = st.number_input("💀 Adult Mortality (per 1000)", min_value=1.0, max_value=1000.0, value=150.0)
+    Alcohol = st.slider("🍷 Alcohol Consumption in Liters", min_value=0.0, max_value=20.0, value=5.0, step=0.1)
+    Adult_Mortality = st.number_input("💀 Adult Mortality per 1000", min_value=1.0, max_value=1000.0, value=150.0)
     HIV_AIDS = st.number_input("🎗️ HIV/AIDS Deaths", min_value=0.0, value=0.1, step=0.01)
-    BMI = st.slider("⚖️ BMI", min_value=1.0, max_value=70.0, value=25.0, step=0.1)
+    BMI = st.slider("⚖️ Body Mass Index", min_value=1.0, max_value=70.0, value=25.0, step=0.1)
 
 col3, col4 = st.columns(2)
 with col3:
-    percentage_expenditure = st.slider("🏥 Health Expenditure (% of GDP)", min_value=0.0, max_value=30.0, value=5.0, step=0.1)
-    Total_expenditure = st.slider("🏛️ Gov Health Spending (%)", min_value=0.0, max_value=20.0, value=6.0, step=0.1)
+    percentage_expenditure = st.slider("🏥 Health Expenditure", min_value=0.0, max_value=30.0, value=5.0, step=0.1)
+    Total_expenditure = st.slider("🏛️ Gov Health Spending", min_value=0.0, max_value=20.0, value=6.0, step=0.1)
 
 with col4:
-    under_five = st.number_input("🧒 Under-Five Deaths (per 1000)", min_value=0, max_value=1000, value=20)
-    thinness_mean = st.slider("👶 Prevalence of Thinness (%)", min_value=0.0, max_value=30.0, value=5.0, step=0.1)
+    under_five = st.number_input("🧒 Under-Five Deaths per 1000)", min_value=0, max_value=1000, value=20)
+    thinness_mean = st.slider("👶 Prevalence of Thinness", min_value=0.0, max_value=30.0, value=5.0, step=0.1)
 
 Status = st.selectbox("🌎 Country Status", ["Developed", "Developing"])
 Status_encoded = le.transform([Status])[0]
