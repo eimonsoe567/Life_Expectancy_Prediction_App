@@ -11,6 +11,21 @@ model = model_package["model"]
 le = model_package["label_encoder"]
 columns_order = model_package["columns"]
 
+#SIDEBAR: STUDENT INFO & LOGO
+st.sidebar.markdown("---") # Visual separator
+try:
+    # Replace 'images/parami_logo.png' with your actual file path
+    logo = Image.open("images/parami_logo.png") 
+    st.sidebar.image(logo, use_container_width=True)
+except Exception:
+    st.sidebar.error("Logo not found. Please add 'parami_logo.png' to the images folder.")
+
+st.sidebar.subheader("Student Information")
+st.sidebar.write("**Ei Mon Soe**")
+st.sidebar.write("Data Science Senior Student")
+st.sidebar.write("Parami University")
+st.sidebar.markdown("---") 
+
 #App Title
 st.title("🌍 Life Expectancy Prediction App")
 try:
