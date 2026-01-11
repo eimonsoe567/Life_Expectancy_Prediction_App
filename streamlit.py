@@ -41,47 +41,13 @@ st.sidebar.markdown("""
    - Healthy 🔵.  
 """)
 
-#High Importance
-Schooling = st.slider("📚 Schooling - Years ", min_value=0.0, value=12.0, step=0.1)
-Income_comp = st.slider("💵 Income Composition - Human Development Index (HDI)", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
-GDP = st.number_input("💰 GDP per Capita (USD)", min_value=0.0, value=5000.0, step=100.0)
-Immunization = st.slider("💉 Immunization - Average of Hepatitis B, Polio, Diphtheria", min_value=0.0, max_value=100.0, value=95.0)
-Alcohol = st.selectbox("🍷 Alcohol - Consumption per Liters", ["None", "Low (0-2)", "Moderate (2-5)", "High (>5)"])
-Adult_Mortality = st.selectbox("Adult Mortality", ["Low (<150)", "Medium (150-250)", "High (>250)"])
-HIV_AIDS = st.number_input("HIV/AIDS - Deaths per 1000 live births", min_value=0.0, value=0.1, step=0.01)
-BMI = st.number_input("BMI - Body Mass Index", min_value=0.0, value=25.0, step=0.1)
-
-#Medium Importance
-percentage_expenditure = st.selectbox("🏥 Health Expenditure per Capita", ["Low (<5%)", "Medium (5-10%)", "High (>10%)"])
-Total_expenditure = st.selectbox("🏛️ Government Health Spending", ["Low (<5%)", "Medium (5-10%)", "High (>10%)"])
-under_five = st.selectbox("🧒 Under-Five Deaths", ["Low (<20)", "Medium (20-100)", "High (>100)"])
-
-#Low Importance
-thinness_mean = st.number_input("👶 Prevalence of Thinness", min_value=0.0, value=0.2, step=0.01)
-Status = st.selectbox("🌎 Country Status", ["Developed", "Developing"])
-
-Status_encoded = le.transform([Status])[0]
-
-adult_mortality_map = {"Low (<150)": 100, "Medium (150-250)": 200, "High (>250)": 300}
-alcohol_map = {"None": 0.0, "Low (0-2)": 1.0, "Moderate (2-5)": 3.0, "High (>5)": 6.0}
-percentage_map = {"Low (<5%)": 2.0, "Medium (5-10%)": 7.0, "High (>10%)": 12.0}
-total_exp_map = {"Low (<5%)": 2.0, "Medium (5-10%)": 7.0, "High (>10%)": 12.0}
-under_five_map = {"Low (<20)": 10, "Medium (20-100)": 50, "High (>100)": 150}
-
-Adult_Mortality_val = adult_mortality_map[Adult_Mortality]
-Alcohol_val = alcohol_map[Alcohol]
-percentage_val = percentage_map[percentage_expenditure]
-Total_expenditure_val = total_exp_map[Total_expenditure]
-under_five_val = under_five_map[under_five]
-
-
 input_data = pd.DataFrame({
-    "Adult Mortality": [Adult_Mortality_val],
-    "Alcohol": [Alcohol_val],
-    "percentage expenditure": [percentage_val],
+    "Adult Mortality": [Adult_Mortality],
+    "Alcohol": [Alcohol],
+    "percentage expenditure": [percentage_expenditure],
     " BMI ": [BMI],
-    "under-five deaths ": [under_five_val],
-    "Total expenditure": [Total_expenditure_val],
+    "under-five deaths ": [under_five],
+    "Total expenditure": [Total_expenditure],
     " HIV/AIDS": [HIV_AIDS],
     "GDP": [GDP],
     "Income composition of resources": [Income_comp],
