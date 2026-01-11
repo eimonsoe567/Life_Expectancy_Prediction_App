@@ -29,11 +29,6 @@ st.sidebar.markdown("---")
 
 #App Title
 st.title("🌍 Life Expectancy Prediction App")
-try:
-    header_img = Image.open("images/life_banner.jpg")
-    st.image(header_img, use_container_width=True)
-except Exception as e:
-    st.warning("Banner image not found. Please place 'life_banner.jpg' in the images folder.")
 
 st.sidebar.header("How it works")
 st.sidebar.markdown("""
@@ -102,27 +97,50 @@ if st.button("Predict Life Expectancy"):
     try:
         prediction = model.predict(input_data)[0]
         rounded_prediction = round(prediction)
+        
+        st.markdown("---")
         st.success(f"Predicted Life Expectancy: **{rounded_prediction} years**")
-#Categorize into four health stages 
+        
+        # Display health stage logic
         if prediction <= 45:
-            health_stage = "Critical 🔴"
-            image = "critical_image.jpg"  
+            health_stage, image = "Critical 🔴", "critical_image.jpg"
         elif prediction <= 55:
-            health_stage = "At Risk 🟠"
-            image = "at_risk_image.jpg"  
+            health_stage, image = "At Risk 🟠", "at_risk_image.jpg"
         elif prediction <= 70:
-            health_stage = "UnHealthy 🟢"
-            image = "unhealthy_image.jpg"  
+            health_stage, image = "UnHealthy 🟢", "unhealthy_image.jpg"
         else:
-            health_stage = "Healthy 🔵"
-            image = "healthy_image.jpg"  
+            health_stage, image = "Healthy 🔵", "healthy_image.jpg"
 
         st.write(f"Health Stage: **{health_stage}**")
-        img = Image.open(f"images/{image}")
-        img = img.resize((300, 300))
-        st.image(img, use_container_width=False)
+        
+        #Display Image
+        try:
+            img = Image.open(f"images/{image}").resize((300, 300))
+            st.image(img, use_container_width=False)
+        except:
+            st.info("Stage image not found.")
+
+        #Summary Section
+        st.markdown("### 📋 Summary of Chosen Factors")
+        
+        #Create a cleaner version of the input_data for the user to read
+        summary_df = pd.DataFrame({
+            "Factor": [
+                "Schooling Years", "HDI (Income Comp)", "GDP per Capita", 
+                "Immunization %", "Alcohol Consumption", "Adult Mortality", 
+                "HIV/AIDS Deaths", "BMI", "Country Status"
+            ],
+            "Your Selection": [
+                f"{Schooling} years", Income_comp, f"${GDP:,.2f}", 
+                f"{Immunization}%", Alcohol, Adult_Mortality, 
+                HIV_AIDS, BMI, Status
+            ]
+        })
+        
+        # Display as a static table
+        st.table(summary_df)
+        
     except Exception as e:
         st.error(f"Prediction failed: {e}")
-
 
 
