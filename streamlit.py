@@ -20,10 +20,12 @@ except Exception:
     st.sidebar.error("Logo not found. Please add 'parami_logo.png' to the images folder.")
 
 st.sidebar.subheader("Student Information")
+
 st.sidebar.markdown("""
-**Ei Mon Soe** Senior Data Science Student  
+**Ei Mon Soe**<br>
+Senior Data Science Student<br>
 Parami University
-""")
+""", unsafe_allow_html=True)
 
 st.sidebar.markdown("---")
 
