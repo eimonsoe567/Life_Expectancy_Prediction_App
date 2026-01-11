@@ -41,11 +41,8 @@ st.sidebar.markdown("""
    - Healthy 🔵.  
 """)
 
-# --- INPUT SECTION: High Importance ---
-st.header("📊 Health & Socio-Economic Indicators")
-
+#High Importance
 col1, col2 = st.columns(2)
-
 with col1:
     Schooling = st.slider("📚 Schooling - Years", min_value=0.0, max_value=20.0, value=12.0, step=0.1)
     Income_comp = st.slider("💵 Income Composition (HDI)", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
@@ -58,10 +55,7 @@ with col2:
     HIV_AIDS = st.number_input("🎗️ HIV/AIDS Deaths", min_value=0.0, value=0.1, step=0.01)
     BMI = st.slider("⚖️ BMI", min_value=1.0, max_value=70.0, value=25.0, step=0.1)
 
-# --- UPDATED: Medium & Low Importance (Previously selectboxes, now sliders/inputs) ---
-st.markdown("---")
 col3, col4 = st.columns(2)
-
 with col3:
     percentage_expenditure = st.slider("🏥 Health Expenditure (% of GDP)", min_value=0.0, max_value=30.0, value=5.0, step=0.1)
     Total_expenditure = st.slider("🏛️ Gov Health Spending (%)", min_value=0.0, max_value=20.0, value=6.0, step=0.1)
@@ -73,8 +67,7 @@ with col4:
 Status = st.selectbox("🌎 Country Status", ["Developed", "Developing"])
 Status_encoded = le.transform([Status])[0]
 
-# --- PREPARATION: input_data DataFrame ---
-# Note: We use the variables directly now because they are already numerical.
+#Input DataFrame
 input_data = pd.DataFrame({
     "Adult Mortality": [Adult_Mortality],
     "Alcohol": [Alcohol],
@@ -90,8 +83,7 @@ input_data = pd.DataFrame({
     "Immunization": [Immunization], # Ensure this key matches your specific model's 'Immunization' key
     "thinness_mean": [thinness_mean]
 })
-
-# Reorder columns to match your model's training order exactly
+#Reorder columns to match my model's training order exactly
 input_data = input_data[columns_order]
 
 #Prediction button
@@ -139,7 +131,7 @@ if st.button("Predict Life Expectancy"):
             ]
         })
         
-        # Display as a static table
+        #Display as a static table
         st.table(summary_df)
         
     except Exception as e:
