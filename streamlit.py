@@ -21,11 +21,11 @@ except Exception:
 
 st.sidebar.subheader("Student Information")
 st.sidebar.markdown("""
-**Ei Mon Soe**
-Senior Data Science Student  
+**Ei Mon Soe** Senior Data Science Student  
 Parami University
 """)
-st.sidebar.markdown("---") 
+
+st.sidebar.markdown("---")
 
 #App Title
 st.title("🌍 Life Expectancy Prediction App")
