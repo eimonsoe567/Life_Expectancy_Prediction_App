@@ -56,7 +56,7 @@ with col2:
     HIV_AIDS = st.number_input("🎗️ HIV/AIDS Deaths", min_value=0.0, value=0.1, step=0.01)
     BMI = st.slider("⚖️ Body Mass Index", min_value=1.0, max_value=70.0, value=25.0, step=0.1)
 
-st.sidebar.markdown("----------")
+st.markdown("---")
 col3, col4 = st.columns(2)
 with col3:
     percentage_expenditure = st.slider("🏥 Health Expenditure", min_value=0.0, max_value=30.0, value=5.0, step=0.1)
