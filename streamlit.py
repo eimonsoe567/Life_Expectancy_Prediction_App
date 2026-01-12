@@ -3,13 +3,16 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 
-#Load trained model
+#Load trained model package
 with open("life_expectancy_app.pkl", "rb") as f:
     model_package = pickle.load(f)
-
 model = model_package["model"]
-le = model_package["label_encoder"]
+encoders = model_package["encoders"] 
 columns_order = model_package["columns"]
+
+#Extract specific encoders
+le_country = encoders["Country"]
+le_status = encoders["Status"]
 
 #Sidebar (Student info and logo)
 st.sidebar.markdown("---")
@@ -29,11 +32,12 @@ st.sidebar.markdown("---")
 
 #App Title
 st.title("🌍 Life Expectancy Prediction App")
-
 st.sidebar.header("How it works")
 st.sidebar.markdown("""
-1. Input immunization factors, mortality factors, and socio-economic information.  
-2. Click **Predict Life Expectancy**.  
+1. Select your **Country** and **Status**.
+2. Input immunization, mortality, and socio-economic factors.  
+3. Click **Predict Life Expectancy**.  
+""") 
 3. See life stage:
    - Critical 🔴, 
    - At Risk 🟠,
@@ -41,7 +45,19 @@ st.sidebar.markdown("""
    - Healthy 🔵.  
 """)
 
-#High Importance
+#Input Section
+st.subheader("General Information")
+col_a, col_b = st.columns(2)
+
+with col_a:
+    country_list = list(le_country.classes_)
+    selected_country = st.selectbox("📍 Select Country", country_list)
+
+with col_b:
+    status_list = list(le_status.classes_)
+    selected_status = st.selectbox("🌎 Country Status", status_list)
+                   
+st.markdown("---")                   
 st.subheader("Health & Socio-Economic Indicators")
 col1, col2 = st.columns(2)
 with col1:
@@ -71,6 +87,8 @@ Status_encoded = le.transform([Status])[0]
 
 #Input DataFrame
 input_data = pd.DataFrame({
+    "Country": [country_encoded],
+    "Status": [status_encoded],
     "Adult Mortality": [Adult_Mortality],
     "Alcohol": [Alcohol],
     "percentage expenditure": [percentage_expenditure],
