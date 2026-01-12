@@ -134,7 +134,7 @@ if st.button("Predict Life Expectancy"):
             st.info("Stage image not found.")
 
         #Summary Section
-st.markdown("📋 Summary of Chosen Factors")
+st.markdown("### 📋 Summary of Chosen Factors")
 
 display_country = le_country.inverse_transform([country_encoded])[0]
 display_status = le_status.inverse_transform([status_encoded])[0]
