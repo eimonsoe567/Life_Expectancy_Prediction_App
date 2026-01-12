@@ -53,13 +53,18 @@ col_a, col_b = st.columns(2)
 with col_a:
     country_list = list(le_country.classes_)
     selected_country = st.selectbox("📍 Select Country", country_list)
-    
+
 with col_b:
     suggested_status = country_status_map.get(selected_country, "Developing")
     status_list = list(le_status.classes_)
     status_idx = status_list.index(suggested_status)
-    selected_status = st.selectbox("🌎 Country Status", status_list, index=status_idx)
-    
+    selected_status = st.selectbox(
+        "🌎 Country Status", 
+        status_list, 
+        index=status_idx, 
+        disabled=True,
+        help="The status is automatically set based on the selected country's historical data.")
+
 st.markdown("---")
 st.subheader("Health & Socio-Economic Indicators")
 col1, col2 = st.columns(2)
