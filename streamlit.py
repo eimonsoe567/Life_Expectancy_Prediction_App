@@ -125,8 +125,8 @@ summary_df = pd.DataFrame({
     ],
     "Your Selection": [
         selected_country, selected_status, Adult_Mortality, f"{Alcohol} L",
-        f"{percentage_expenditure}%", Average Body Mass, under_five, Total_expenditure,
-        HIV_AIDS, f"${GDP:,.2f}", Income Composition, f"{Schooling} yrs",
+        f"{percentage_expenditure}%", BMI, under_five, Total_expenditure,
+        HIV_AIDS, f"${GDP:,.2f}", Income_comp, f"{Schooling} yrs",
         f"{Immunization}%", thinness_mean
     ]
 })
