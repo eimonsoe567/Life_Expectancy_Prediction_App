@@ -36,9 +36,8 @@ st.sidebar.header("How it works")
 st.sidebar.markdown("""
 1. Select your **Country** and **Status**.
 2. Input immunization, mortality, and socio-economic factors.  
-3. Click **Predict Life Expectancy**.  
-""") 
-3. See life stage:
+3. Click Predict.
+4. See life stage:
    - Critical, 
    - At Risk,
    - Unhealthy, and 
