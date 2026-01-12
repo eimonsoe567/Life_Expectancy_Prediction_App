@@ -1,15 +1,19 @@
 # Life_Expectancy_Prediction_App
 
 Global Life Expectancy Prediction App
+
 Developed by: Ei Mon Soe
 
 Major: Statistics and Data Science (Parami University)
 
 📌 Project Overview
+
 This project leverages Machine Learning to predict life expectancy based on health, immunization, and socio-economic factors. Using a dataset sourced from Kaggle (originally provided by the World Health Organization), the goal was to transform complex global health data into an intuitive tool that provides immediate insights into a country’s health profile.
 
 Data Science Workflow
+
 1. Data Preprocessing & Cleaning
+   
 Real-world data is often messy. I implemented several statistical techniques to ensure data integrity:
 
 (1) Intelligent Imputation: Used SimpleImputer (mean strategy) for columns with minimal missing values. For Alcohol, I used a Grouped Mean (by Country) to reflect regional cultural patterns.
@@ -31,6 +35,7 @@ Real-world data is often messy. I implemented several statistical techniques to 
     - MAE of 2.92: On average, predictions are within 3 years of the actual values.
 
 Web Application Features
+
 The app was built using Streamlit with a focus on User Experience (UX):
 
 (1) Geographic Context: Users select a country, and the app automatically identifies its development status (locked via a disabled selectbox to maintain data accuracy).
