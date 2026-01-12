@@ -45,6 +45,7 @@ The app was built using Streamlit with a focus on User Experience (UX):
 (3) Real-time Summary: A dynamic "Snapshot" table updates instantly as users adjust parameters.
 
 (4) Health Stage Classification: Based on the prediction, the app categorizes life expectancy into four stages:
+
     - 🔴 Critical (≤ 45 years)
     
     - 🟠 At Risk (45-55 years)
@@ -62,3 +63,16 @@ Libraries: Pandas, NumPy, Scikit-learn, Matplotlib, PIL
 Deployment: Streamlit Cloud
 
 Model Persistence: Pickle
+
+Dataset Source
+The data used in this project is sourced from the Life Expectancy (WHO) Dataset on Kaggle.
+
+Source Link: https://www.kaggle.com/datasets/kumarajarshi/life-expectancy-who/data
+
+Origin: World Health Organization (WHO) and United Nations (UN).
+
+Time Period: 2000-2015.
+
+Scope: 193 countries.
+
+Key Indicators: 22 variables, including immunization factors, mortality rates, economic health (GDP), and social factors (Schooling).
