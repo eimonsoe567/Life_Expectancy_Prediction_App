@@ -110,6 +110,50 @@ input_data = pd.DataFrame({
 # Reorder columns to match model training exactly
 input_data = input_data[columns_order]
 
+# ... (Sliders and Selectboxes are above this) ...
+
+# 1. Encode the inputs (Necessary for the logic, but we use selection for the table)
+country_encoded = le_country.transform([selected_country])[0]
+status_encoded = le_status.transform([selected_status])[0]
+
+# 2. Dynamic Summary Section (PLACE THIS BEFORE THE BUTTON)
+st.markdown("---")
+st.subheader("📋 Live Summary of Selections")
+st.info("The values below update instantly as you adjust the inputs.")
+
+summary_df = pd.DataFrame({
+    "Factor": [
+        "Country", "Status", "Adult Mortality", "Alcohol", 
+        "Health Expenditure (%)", "BMI", "Under-Five Deaths", 
+        "Gov Health Spending", "HIV/AIDS Deaths", "GDP per Capita", 
+        "Income Comp", "Schooling", "Immunization Index", "Thinness Mean"
+    ],
+    "Your Selection": [
+        selected_country, selected_status, Adult_Mortality, f"{Alcohol} L",
+        f"{percentage_expenditure}%", BMI, under_five, Total_expenditure,
+        HIV_AIDS, f"${GDP:,.2f}", Income_comp, f"{Schooling} yrs",
+        f"{Immunization}%", thinness_mean
+    ]
+})
+st.table(summary_df)
+input_data = pd.DataFrame({
+    "Country": [country_encoded],
+    "Status": [status_encoded],
+    "Adult Mortality": [Adult_Mortality],
+    "Alcohol": [Alcohol],
+    "percentage expenditure": [percentage_expenditure],
+    " BMI ": [BMI],
+    "under-five deaths ": [under_five],
+    "Total expenditure": [Total_expenditure],
+    " HIV/AIDS": [HIV_AIDS],
+    "GDP": [GDP],
+    "Income composition of resources": [Income_comp],
+    "Schooling": [Schooling],
+    "Immunization": [Immunization],
+    "thinness_mean": [thinness_mean]
+})
+input_data = input_data[columns_order]
+
 # --- Prediction Logic ---
 if st.button("Predict Life Expectancy"):
     try:
@@ -130,49 +174,6 @@ if st.button("Predict Life Expectancy"):
             img = Image.open(f"images/{image}").resize((300, 300))
             st.image(img)
         except:
-            st.info("Stage image not found.")
-
-        # --- THE FIX: Summary Section showing NAMES, not Numbers ---
-        # --- Summary Section (All Factors) ---
-        st.markdown("### 📋 Summary of Chosen Factors")
-        
-        summary_df = pd.DataFrame({
-            "Factor": [
-                "Country", 
-                "Status", 
-                "Adult Mortality (per 1000)", 
-                "Alcohol Consumption (L)",
-                "Health Expenditure (%)",
-                "BMI",
-                "Under-Five Deaths",
-                "Gov Health Spending",
-                "HIV/AIDS Deaths",
-                "GDP per Capita",
-                "Income Composition",
-                "Schooling (Years)",
-                "Immunization Index (%)",
-                "Prevalence of Thinness"
-            ],
-            "Your Selection": [
-                selected_country,        # Shows name
-                selected_status,         # Shows name
-                f"{Adult_Mortality}",
-                f"{Alcohol} L",
-                f"{percentage_expenditure}%",
-                f"{BMI}",
-                f"{under_five}",
-                f"{Total_expenditure}",
-                f"{HIV_AIDS}",
-                f"${GDP:,.2f}",          # Formatted currency
-                f"{Income_comp}",
-                f"{Schooling} yrs",
-                f"{Immunization}%",      # Formatted percentage
-                f"{thinness_mean}"
-            ]
-        })
-
-        # Display as a clean table
-        st.table(summary_df)
-        
+            st.info("Stage image not found.")    
     except Exception as e:
         st.error(f"Error: {e}")
