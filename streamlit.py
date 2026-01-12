@@ -10,6 +10,7 @@ with open("life_expectancy_app.pkl", "rb") as f:
 model = model_package["model"]
 encoders = model_package["encoders"] 
 columns_order = model_package["columns"]
+country_status_map = model_package.get("country_status_map", {})
 
 #Extract specific encoders
 le_country = encoders["Country"]
@@ -55,7 +56,8 @@ with col_a:
 
 with col_b:
     status_list = list(le_status.classes_)
-    selected_status = st.selectbox("🌎 Country Status", status_list)
+    status_idx = status_list.index(suggested_status)
+    selected_status = st.selectbox("🌎 Country Status", status_list, index=status_idx)
 
 st.markdown("---")
 st.subheader("Health & Socio-Economic Indicators")
@@ -86,8 +88,8 @@ country_encoded = le_country.transform([selected_country])[0]
 status_encoded = le_status.transform([selected_status])[0]
 
 input_data = pd.DataFrame({
-    "Country": [country_encoded],
-    "Status": [status_encoded],
+    "Country_encoded": [country_encoded],
+    "Status_encoded": [status_encoded],
     "Adult Mortality": [Adult_Mortality],
     "Alcohol": [Alcohol],
     "percentage expenditure": [percentage_expenditure],
@@ -103,9 +105,6 @@ input_data = pd.DataFrame({
 })
 #Reorder columns to match model training exactly
 input_data = input_data[columns_order]
-
-country_encoded = le_country.transform([selected_country])[0]
-status_encoded = le_status.transform([selected_status])[0]
 
 st.markdown("---")
 st.subheader("Summary of Selections")
