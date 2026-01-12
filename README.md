@@ -22,7 +22,9 @@ Real-world data is often messy. I implemented several statistical techniques to 
 
 2. Model Training
 (1) Algorithm: Linear Regression.
+
 (2) Encoding: Used LabelEncoder for categorical variables like Country and Status.
+
 (3) Performance:
     - R2 Score of 0.81: The model explains 81% of the variance in life expectancy.
     - MAE of 2.92: On average, predictions are within 3 years of the actual values.
@@ -31,8 +33,11 @@ Web Application Features
 The app was built using Streamlit with a focus on User Experience (UX):
 
 (1) Geographic Context: Users select a country, and the app automatically identifies its development status (locked via a disabled selectbox to maintain data accuracy).
+
 (2) Interactive Controls: Used sliders and numeric inputs (preset to global means) for easy data entry.
+
 (3) Real-time Summary: A dynamic "Snapshot" table updates instantly as users adjust parameters.
+
 (4) Health Stage Classification: Based on the prediction, the app categorizes life expectancy into four stages:
     - 🔴 Critical (≤ 45 years)
     - 🟠 At Risk (45-55 years)
@@ -41,6 +46,9 @@ The app was built using Streamlit with a focus on User Experience (UX):
 
 🚀 Tech Stack
 Language: Python
+
 Libraries: Pandas, NumPy, Scikit-learn, Matplotlib, PIL
+
 Deployment: Streamlit Cloud
+
 Model Persistence: Pickle
