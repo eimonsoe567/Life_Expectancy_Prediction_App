@@ -87,7 +87,7 @@ with col3:
     percentage_expenditure = st.slider("🏥 Health Expenditure", min_value=0.0, max_value=30.0, value=5.0)
     Total_expenditure = st.slider("🏛️ Gov Health Spending", min_value=0.0, max_value=20.0, value=6.0)
 with col4:
-    under_five = st.number_input("🧒 Under-Five Deaths", min_value=0, value=42, step=1.0)
+    under_five = st.number_input("🧒 Under-Five Deaths", min_value=0.0, value=42.0, step=1.0)
     thinness_mean = st.slider("👶 Thinness Mean", min_value=0.0, max_value=30.0, value=5.0)
     
 country_encoded = le_country.transform([selected_country])[0]
