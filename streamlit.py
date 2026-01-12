@@ -39,10 +39,10 @@ st.sidebar.markdown("""
 3. Click **Predict Life Expectancy**.  
 """) 
 3. See life stage:
-   - Critical 🔴, 
-   - At Risk 🟠,
-   - Unhealthy 🟢, and 
-   - Healthy 🔵.  
+   - Critical, 
+   - At Risk,
+   - Unhealthy, and 
+   - Healthy.  
 """)
 
 #Input Section
