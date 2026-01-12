@@ -133,11 +133,45 @@ if st.button("Predict Life Expectancy"):
             st.info("Stage image not found.")
 
         # --- THE FIX: Summary Section showing NAMES, not Numbers ---
+        # --- Summary Section (All Factors) ---
         st.markdown("### 📋 Summary of Chosen Factors")
+        
         summary_df = pd.DataFrame({
-            "Factor": ["Country", "Status", "Schooling", "GDP", "Immunization"],
-            "Value": [selected_country, selected_status, f"{Schooling} yrs", f"${GDP:,.2f}", f"{Immunization}%"]
+            "Factor": [
+                "Country", 
+                "Status", 
+                "Adult Mortality (per 1000)", 
+                "Alcohol Consumption (L)",
+                "Health Expenditure (%)",
+                "BMI",
+                "Under-Five Deaths",
+                "Gov Health Spending",
+                "HIV/AIDS Deaths",
+                "GDP per Capita",
+                "Income Composition",
+                "Schooling (Years)",
+                "Immunization Index (%)",
+                "Prevalence of Thinness"
+            ],
+            "Your Selection": [
+                selected_country,        # Shows name
+                selected_status,         # Shows name
+                f"{Adult_Mortality}",
+                f"{Alcohol} L",
+                f"{percentage_expenditure}%",
+                f"{BMI}",
+                f"{under_five}",
+                f"{Total_expenditure}",
+                f"{HIV_AIDS}",
+                f"${GDP:,.2f}",          # Formatted currency
+                f"{Income_comp}",
+                f"{Schooling} yrs",
+                f"{Immunization}%",      # Formatted percentage
+                f"{thinness_mean}"
+            ]
         })
+
+        # Display as a clean table
         st.table(summary_df)
         
     except Exception as e:
