@@ -134,33 +134,17 @@ if st.button("Predict Life Expectancy"):
             st.info("Stage image not found.")
 
         #Summary Section
-st.markdown("### 📋 Summary of Chosen Factors")
+        st.markdown("### 📋 Summary of Chosen Factors")
+        
+        # Convert numeric codes back to text for the user
+        display_country = le_country.inverse_transform([country_encoded])[0]
+        display_status = le_status.inverse_transform([status_encoded])[0]
 
-display_country = le_country.inverse_transform([country_encoded])[0]
-display_status = le_status.inverse_transform([status_encoded])[0]
-
-summary_df = pd.DataFrame({
-    "Factor": [
-        "Country", 
-        "Status", 
-        "Schooling Years", 
-        "GDP per Capita", 
-        "Immunization %", 
-        "Adult Mortality"
-    ],
-    "Your Selection": [
-        display_country,    
-        display_status,    
-        f"{Schooling} years", 
-        f"${GDP:,.2f}", 
-        f"{Immunization}%", 
-        Adult_Mortality
-    ]
-})
-
-#Display as a static table
-st.table(summary_df)  
+        summary_df = pd.DataFrame({
+            "Factor": ["Country", "Status", "Schooling", "GDP", "Immunization", "BMI"],
+            "Value": [display_country, display_status, f"{Schooling} yrs", f"${GDP:,.2f}", f"{Immunization}%", BMI]
+        })
+        st.table(summary_df)
+        
     except Exception as e:
         st.error(f"Prediction failed: {e}")
-
-
