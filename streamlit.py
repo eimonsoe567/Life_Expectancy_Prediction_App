@@ -32,6 +32,7 @@ st.sidebar.markdown("---")
 
 #App Title
 st.title("🌍 Life Expectancy Prediction App")
+
 st.sidebar.header("How it works")
 st.sidebar.markdown("""
 1. Select your **Country** and **Status**.
@@ -81,8 +82,8 @@ with col4:
     under_five = st.number_input("🧒 Under-Five Deaths per 1000", min_value=0, max_value=1000, value=20)
     thinness_mean = st.slider("👶 Prevalence of Thinness", min_value=0.0, max_value=30.0, value=5.0, step=0.1)
 
-Status = st.selectbox("🌎 Country Status", ["Developed", "Developing"])
-Status_encoded = le.transform([Status])[0]
+country_encoded = le_country.transform([selected_country])[0]
+status_encoded = le_status.transform([selected_status])[0]
 
 #Input DataFrame
 input_data = pd.DataFrame({
@@ -114,7 +115,7 @@ if st.button("Predict Life Expectancy"):
         st.markdown("---")
         st.success(f"Predicted Life Expectancy: **{rounded_prediction} years**")
         
-        # Display health stage logic
+        #Display health stage logic
         if prediction <= 45:
             health_stage, image = "Critical 🔴", "critical_image.jpg"
         elif prediction <= 55:
@@ -135,11 +136,6 @@ if st.button("Predict Life Expectancy"):
 
         #Summary Section
         st.markdown("### 📋 Summary of Chosen Factors")
-        
-        # Convert numeric codes back to text for the user
-        display_country = le_country.inverse_transform([country_encoded])[0]
-        display_status = le_status.inverse_transform([status_encoded])[0]
-
         summary_df = pd.DataFrame({
             "Factor": ["Country", "Status", "Schooling", "GDP", "Immunization", "BMI"],
             "Value": [display_country, display_status, f"{Schooling} yrs", f"${GDP:,.2f}", f"{Immunization}%", BMI]
