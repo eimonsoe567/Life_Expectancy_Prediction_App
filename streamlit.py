@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 
-# 1. Load trained model package
+#Load trained model package
 with open("life_expectancy_app.pkl", "rb") as f:
     model_package = pickle.load(f)
 
@@ -11,11 +11,11 @@ model = model_package["model"]
 encoders = model_package["encoders"] 
 columns_order = model_package["columns"]
 
-# Extract specific encoders
+#Extract specific encoders
 le_country = encoders["Country"]
 le_status = encoders["Status"]
 
-# Sidebar (Student info and logo)
+#Sidebar (Student info and logo)
 st.sidebar.markdown("---")
 try:
     logo = Image.open("images/parami_logo.png") 
@@ -44,10 +44,8 @@ st.sidebar.markdown("""
    - **Healthy** 🔵
 """)
 
-# App Title
+#App Title
 st.title("🌍 Life Expectancy Prediction App")
-
-# --- Input Section ---
 st.subheader("General Information")
 col_a, col_b = st.columns(2)
 
@@ -83,13 +81,10 @@ with col3:
 with col4:
     under_five = st.number_input("🧒 Under-Five Deaths", min_value=0, value=20)
     thinness_mean = st.slider("👶 Thinness Mean", min_value=0.0, max_value=30.0, value=5.0)
-
-# --- THE FIX: Encode the selections ---
+    
 country_encoded = le_country.transform([selected_country])[0]
 status_encoded = le_status.transform([selected_status])[0]
 
-# Create Input DataFrame
-# I removed "Status_encoded" because your model expects "Status" (containing the number)
 input_data = pd.DataFrame({
     "Country": [country_encoded],
     "Status": [status_encoded],
@@ -106,19 +101,14 @@ input_data = pd.DataFrame({
     "Immunization": [Immunization],
     "thinness_mean": [thinness_mean]
 })
-
-# Reorder columns to match model training exactly
+#Reorder columns to match model training exactly
 input_data = input_data[columns_order]
 
-# ... (Sliders and Selectboxes are above this) ...
-
-# 1. Encode the inputs (Necessary for the logic, but we use selection for the table)
 country_encoded = le_country.transform([selected_country])[0]
 status_encoded = le_status.transform([selected_status])[0]
 
-# 2. Dynamic Summary Section (PLACE THIS BEFORE THE BUTTON)
 st.markdown("---")
-st.subheader("📋 Live Summary of Selections")
+st.subheader("Summary of Selections")
 st.info("The values below update instantly as you adjust the inputs.")
 
 summary_df = pd.DataFrame({
@@ -154,7 +144,7 @@ input_data = pd.DataFrame({
 })
 input_data = input_data[columns_order]
 
-# --- Prediction Logic ---
+#Prediction Logic
 if st.button("Predict Life Expectancy"):
     try:
         prediction = model.predict(input_data)[0]
@@ -169,7 +159,7 @@ if st.button("Predict Life Expectancy"):
 
         st.write(f"Health Stage: **{health_stage}**")
         
-        # Display Image
+        #Display Image
         try:
             img = Image.open(f"images/{image}").resize((300, 300))
             st.image(img)
