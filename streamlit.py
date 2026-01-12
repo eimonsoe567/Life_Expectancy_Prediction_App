@@ -35,7 +35,7 @@ st.sidebar.markdown("---")
 
 st.sidebar.header("How it works")
 st.sidebar.markdown("""
-1. Select your **Country** and **Status**.
+1. Select your **Country** and it will automactically select **Status**.
 2. Input immunization, mortality, and socio-economic factors.  
 3. Click Predict.
 4. See life stage:
