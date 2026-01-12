@@ -18,7 +18,7 @@ le_status = encoders["Status"]
 #Sidebar (Student info and logo)
 st.sidebar.markdown("---")
 try:
-    logo = Image.open("images/parami_logo.png") 
+    logo = Image.open("images/my_photo.png") 
     st.sidebar.image(logo, use_container_width=True)
 except Exception:
     st.sidebar.error("Logo not found.")
