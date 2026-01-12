@@ -21,6 +21,7 @@ Real-world data is often messy. I implemented several statistical techniques to 
     - Thinness Index: Combined child and adolescent thinness metrics using Log Transformation and Min-Max Scaling to handle non-normal distributions.
 
 2. Model Training
+   
 (1) Algorithm: Linear Regression.
 
 (2) Encoding: Used LabelEncoder for categorical variables like Country and Status.
@@ -40,11 +41,15 @@ The app was built using Streamlit with a focus on User Experience (UX):
 
 (4) Health Stage Classification: Based on the prediction, the app categorizes life expectancy into four stages:
     - 🔴 Critical (≤ 45 years)
+    
     - 🟠 At Risk (45-55 years)
+    
     - 🟢 Unhealthy (55–70 years)
+    
     - 🔵 Healthy (> 70 years)
 
 🚀 Tech Stack
+
 Language: Python
 
 Libraries: Pandas, NumPy, Scikit-learn, Matplotlib, PIL
