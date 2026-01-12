@@ -104,7 +104,7 @@ input_data = pd.DataFrame({
     "Total expenditure": [Total_expenditure],
     " HIV/AIDS": [HIV_AIDS],
     "GDP": [GDP],
-    "Income composition of resources": [Income_Composition],
+    "Income composition of resources": [Income_comp],
     "Schooling": [Schooling],
     "Immunization": [Immunization],
     "thinness_mean": [thinness_mean]
