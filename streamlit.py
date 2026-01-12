@@ -47,7 +47,7 @@ st.sidebar.markdown("""
 
 #App Title
 st.title("🌍 Life Expectancy Prediction App")
-st.subheader("General Information")
+st.subheader("Geographic Context")
 col_a, col_b = st.columns(2)
 
 with col_a:
@@ -73,13 +73,13 @@ with col1:
     Schooling = st.slider("📚 Schooling", min_value=0.0, max_value=20.0, value=12.0, step=0.1)
     Income_comp = st.slider("💵 Income Composition", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
     GDP = st.number_input("💰 GDP per Capita", min_value=0.0, value=5000.0)
-    Immunization = st.slider("Immunization %", min_value=0.0, max_value=100.0, value=95.0)
+    Immunization = st.slider("Immunization", min_value=0.0, max_value=100.0, value=95.0)
 
 with col2:
     Alcohol = st.slider("🍷 Alcohol Consumption", min_value=0.0, max_value=20.0, value=5.0)
     Adult_Mortality = st.number_input("💀 Adult Mortality", min_value=1.0, max_value=1000.0, value=150.0)
     HIV_AIDS = st.number_input("🎗️ HIV/AIDS Deaths", min_value=0.0, value=0.1)
-    BMI = st.slider("⚖️ BMI", min_value=1.0, max_value=70.0, value=25.0)
+    BMI = st.slider("⚖️ Average Body Mass", min_value=1.0, max_value=70.0, value=25.0)
 
 st.markdown("---")
 col3, col4 = st.columns(2)
@@ -99,12 +99,12 @@ input_data = pd.DataFrame({
     "Adult Mortality": [Adult_Mortality],
     "Alcohol": [Alcohol],
     "percentage expenditure": [percentage_expenditure],
-    " BMI ": [BMI],
+    " BMI ": [Average Body Mass],
     "under-five deaths ": [under_five],
     "Total expenditure": [Total_expenditure],
     " HIV/AIDS": [HIV_AIDS],
     "GDP": [GDP],
-    "Income composition of resources": [Income_comp],
+    "Income composition of resources": [Income Composition],
     "Schooling": [Schooling],
     "Immunization": [Immunization],
     "thinness_mean": [thinness_mean]
@@ -119,14 +119,14 @@ st.info("The values below update instantly as you adjust the inputs.")
 summary_df = pd.DataFrame({
     "Factor": [
         "Country", "Status", "Adult Mortality", "Alcohol", 
-        "Health Expenditure (%)", "BMI", "Under-Five Deaths", 
+        "Health Expenditure (%)", "Average Body Mass", "Under-Five Deaths", 
         "Gov Health Spending", "HIV/AIDS Deaths", "GDP per Capita", 
-        "Income Comp", "Schooling", "Immunization Index", "Thinness Mean"
+        "Income Composition", "Schooling", "Immunization Index", "Thinness Mean"
     ],
     "Your Selection": [
         selected_country, selected_status, Adult_Mortality, f"{Alcohol} L",
-        f"{percentage_expenditure}%", BMI, under_five, Total_expenditure,
-        HIV_AIDS, f"${GDP:,.2f}", Income_comp, f"{Schooling} yrs",
+        f"{percentage_expenditure}%", Average Body Mass, under_five, Total_expenditure,
+        HIV_AIDS, f"${GDP:,.2f}", Income Composition, f"{Schooling} yrs",
         f"{Immunization}%", thinness_mean
     ]
 })
