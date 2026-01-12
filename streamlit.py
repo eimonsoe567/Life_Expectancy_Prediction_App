@@ -85,7 +85,7 @@ st.markdown("---")
 col3, col4 = st.columns(2)
 with col3:
     percentage_expenditure = st.slider("🏥 Health Expenditure", min_value=0.0, max_value=30.0, value=5.0)
-    Total_expenditure = st.slider("🏛️ Gov Health Spending", min_value=0.0, max_value=20.0, value=6.0)
+    Total_expenditure = st.slider("🏛️ Government Health Spending", min_value=0.0, max_value=20.0, value=6.0)
 with col4:
     under_five = st.number_input("🧒 Under-Five Deaths", min_value=0.0, value=42.0, step=1.0)
     thinness_mean = st.slider("👶 Thinness Mean", min_value=0.0, max_value=30.0, value=5.0)
@@ -120,7 +120,7 @@ summary_df = pd.DataFrame({
     "Factor": [
         "Country", "Status", "Adult Mortality", "Alcohol", 
         "Health Expenditure (%)", "Average Body Mass", "Under-Five Deaths", 
-        "Gov Health Spending", "HIV/AIDS Deaths", "GDP per Capita", 
+        "Government Health Spending", "HIV/AIDS Deaths", "GDP per Capita", 
         "Income Composition", "Schooling", "Immunization Index", "Thinness Mean"
     ],
     "Your Selection": [
