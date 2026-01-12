@@ -126,23 +126,6 @@ summary_df = pd.DataFrame({
     ]
 })
 st.table(summary_df)
-input_data = pd.DataFrame({
-    "Country": [country_encoded],
-    "Status": [status_encoded],
-    "Adult Mortality": [Adult_Mortality],
-    "Alcohol": [Alcohol],
-    "percentage expenditure": [percentage_expenditure],
-    " BMI ": [BMI],
-    "under-five deaths ": [under_five],
-    "Total expenditure": [Total_expenditure],
-    " HIV/AIDS": [HIV_AIDS],
-    "GDP": [GDP],
-    "Income composition of resources": [Income_comp],
-    "Schooling": [Schooling],
-    "Immunization": [Immunization],
-    "thinness_mean": [thinness_mean]
-})
-input_data = input_data[columns_order]
 
 #Prediction Logic
 if st.button("Predict Life Expectancy"):
