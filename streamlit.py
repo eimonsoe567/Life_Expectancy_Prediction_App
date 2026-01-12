@@ -72,12 +72,12 @@ col1, col2 = st.columns(2)
 with col1:
     Schooling = st.slider("📚 Schooling", min_value=0.0, max_value=20.0, value=12.0, step=0.1)
     Income_comp = st.slider("💵 Income Composition", min_value=0.0, max_value=1.0, value=0.5, step=0.01)
-    GDP = st.number_input("💰 GDP per Capita", min_value=0.0, value=5000.0, step=1)
+    GDP = st.number_input("💰 GDP per Capita", min_value=0.0, value=5000.0, step=1.0)
     Immunization = st.slider("Immunization", min_value=0.0, max_value=100.0, value=95.0)
 
 with col2:
     Alcohol = st.slider("🍷 Alcohol Consumption", min_value=0.0, max_value=20.0, value=5.0)
-    Adult_Mortality = st.number_input("💀 Adult Mortality", min_value=1.0, max_value=1000.0, value=150.0, step=1)
+    Adult_Mortality = st.number_input("💀 Adult Mortality", min_value=1.0, max_value=1000.0, value=150.0, step=1.0)
     HIV_AIDS = st.number_input("🎗️ HIV/AIDS Deaths", min_value=0.0, value=0.1, step=0.01)
     BMI = st.slider("⚖️ Average Body Mass", min_value=1.0, max_value=70.0, value=25.0)
 
@@ -87,7 +87,7 @@ with col3:
     percentage_expenditure = st.slider("🏥 Health Expenditure", min_value=0.0, max_value=30.0, value=5.0)
     Total_expenditure = st.slider("🏛️ Gov Health Spending", min_value=0.0, max_value=20.0, value=6.0)
 with col4:
-    under_five = st.number_input("🧒 Under-Five Deaths", min_value=0, value=42, step=1)
+    under_five = st.number_input("🧒 Under-Five Deaths", min_value=0, value=42, step=1.0)
     thinness_mean = st.slider("👶 Thinness Mean", min_value=0.0, max_value=30.0, value=5.0)
     
 country_encoded = le_country.transform([selected_country])[0]
